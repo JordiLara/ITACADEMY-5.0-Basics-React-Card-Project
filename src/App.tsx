@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import Card from './Card';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const tutorialData = [
+    {
+      title: 'Dedica molestes hores',
+      description: 'Un mínim de 30 hores a la setmana. Si no en tens prou, hauràs de dedicarl-li més hores. Al principi sembla impossible, però notaràs una millora ràpidament.',
+    },
+    {
+      title: 'Programa projectes propis',
+      description: 'Més val 10 hores treballant en projectes propis, que 10 hores mirant tutorials. La motivació i la implicació en un projecte ajudarà a accelerar el teu aprenentatge.',
+    },
+    {
+      title: 'Procura descansar',
+      description: 'Descansar bé i desconectar són vitals. D´aquesta manera reduiràs l´estres i l´ansietat. Milloraràs la teva concentració i consolidaràs el teu aprenentatge',
+    },
+    // Agregar aquí más opciones si fuera necesario.
+  ];
+
+  const nextStep = () => {
+    setCurrentStep(prevStep => prevStep + 1);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="App">
+      <Card title={tutorialData[currentStep].title}
+            description={tutorialData[currentStep].description}
+            nextStep={nextStep} />
+    </div>
+  );
+};
 
-export default App
+export default App;
