@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Card from './Card';
+import './App.css';
 
 const App: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const tutorialData = [
     {
-      title: 'Dedica molestes hores',
+      title: 'Dedica moltes hores',
       description: 'Un mínim de 30 hores a la setmana. Si no en tens prou, hauràs de dedicarl-li més hores. Al principi sembla impossible, però notaràs una millora ràpidament.',
       image: '/images/time_managment.svg',
     },

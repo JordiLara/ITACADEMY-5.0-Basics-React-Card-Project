@@ -3,7 +3,6 @@ interface CardProps {
     description: string;
     image: string;
     nextStep: () => void;
-
   }
   
   const Card: React.FC<CardProps> = ({ title, description, image, nextStep }) => {
