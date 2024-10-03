@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from './Card';
-import './App.css';
+import './index.css';
+
 
 const App: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);

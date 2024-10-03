@@ -11,7 +11,7 @@ interface CardProps {
         <img src={image} alt={title} />
         <h2>{title}</h2>
         <p>{description}</p>
-        <button onClick={nextStep}>Siguiente</button>
+        <button onClick={nextStep}>➔</button>
       </div>
     );
   };
