@@ -32,14 +32,14 @@ const App: React.FunctionComponent = () => {
     // Agregar aquí más opciones si fuera necesario.
   ];
 
-    // To-DO cambiar esto a que solo vaya de adelante a atrás
+    // nextStep y prevStep, ahora se detienen al final de cada visionado.
 
   const nextStep = () => {
-    setCurrentStep((actualStep) => (actualStep + 1) % tutorialData.length); // Reiniciar al llegar al final
+    setCurrentStep((firstStep) => Math.min(firstStep + 1, tutorialData.length - 1)); 
   };
 
   const prevStep = () => {
-    setCurrentStep((antStep) => (antStep - 1) % tutorialData.length); // Reiniciar al llegar al final
+    setCurrentStep((lastStep) => Math.max(lastStep - 1, 0)); 
   };
 
   return (
@@ -51,8 +51,14 @@ const App: React.FunctionComponent = () => {
             alt = {tutorialData[currentStep].alt}
             bgColor = {tutorialData[currentStep].bgColor}
             nextStep = {nextStep}
-            prevStep = {prevStep} />
-      </div>
+            prevStep = {prevStep}
+
+            // lógica para que desaparezcan los botones. No hace falta addeventlistener o display:none, qué me estás contando! Lo hace React wtf
+
+            firstStep = {currentStep === 0} // Si el currentstep cumple esta condición será el último step.
+            lastStep = {currentStep === tutorialData.length - 1} // si el last step cumple la condición, será el primero.
+        />
+    </div>
   );
 };
 
