@@ -5,6 +5,7 @@ interface CardProps {
   alt: string;
   bgColor: string;
   nextStep: () => void;
+  prevStep: () => void;
 }
 
 const Card: React.FunctionComponent<CardProps> = ({
@@ -14,6 +15,7 @@ const Card: React.FunctionComponent<CardProps> = ({
   alt,
   bgColor,
   nextStep,
+  prevStep,
 }) => {
   return (
     <div
@@ -33,13 +35,22 @@ const Card: React.FunctionComponent<CardProps> = ({
         <p className = "text-left leading-relaxed">{description}</p>
       </div>
 
-      {/* Botón redondo*/}
+      {/* Botón adelante */}
 
       <button
-        onClick={nextStep}
+        onClick={prevStep}
         className = "absolute bottom-4 right-4 md:bottom-6 md:right-6 w-10 h-10 bg-black text-white flex items-center justify-center rounded-full"
       >
         ➔
+      </button>
+
+      {/* Botón atrás */}
+
+      <button
+        onClick={nextStep}
+        className = "absolute bottom-4 right-4 md:bottom-6 md:left-6 w-10 h-10 bg-black text-white flex items-center justify-center rounded-full"
+      >
+        🡐
       </button>
     </div>
   );

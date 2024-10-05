@@ -7,7 +7,6 @@ const App: React.FunctionComponent = () => {
 
   const [currentStep, setCurrentStep] = useState(0);
 
-
   const tutorialData = [
     {
       title: 'Dedica moltes hores',
@@ -33,8 +32,14 @@ const App: React.FunctionComponent = () => {
     // Agregar aquí más opciones si fuera necesario.
   ];
 
+    // To-DO cambiar esto a que solo vaya de adelante a atrás
+
   const nextStep = () => {
-    setCurrentStep((prevStep) => (prevStep + 1) % tutorialData.length); // Reiniciar al llegar al final
+    setCurrentStep((actualStep) => (actualStep + 1) % tutorialData.length); // Reiniciar al llegar al final
+  };
+
+  const prevStep = () => {
+    setCurrentStep((antStep) => (antStep - 1) % tutorialData.length); // Reiniciar al llegar al final
   };
 
   return (
@@ -45,7 +50,8 @@ const App: React.FunctionComponent = () => {
             image = {tutorialData[currentStep].image}
             alt = {tutorialData[currentStep].alt}
             bgColor = {tutorialData[currentStep].bgColor}
-            nextStep = {nextStep} />
+            nextStep = {nextStep}
+            prevStep = {prevStep} />
       </div>
   );
 };
