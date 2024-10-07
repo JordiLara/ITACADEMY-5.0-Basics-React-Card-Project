@@ -58,11 +58,11 @@ const App: React.FunctionComponent = () => {
             firstStep = {currentStep === 0} // Si el currentstep cumple esta condición será el último step.
             lastStep = {currentStep === tutorialData.length - 1} // si el last step cumple la condición, será el primero.
 
-            // Pasamos el total de pasos que tiene el array al indicator
+            // Pasamos el total de pasos que tiene el array al Indicator
 
             totalSteps = {tutorialData.length} 
 
-            // Pasamos el paso actual de la array al indicator
+            // Pasamos el paso actual de la array al Indicator
 
             currentStep = {currentStep}
         />
