@@ -4,11 +4,13 @@ interface IndicatorProps {
 
   totalSteps: number;
   currentStep: number;
+  goToStep: (step: number) => void;
 };
 
 const Indicator: React.FunctionComponent<IndicatorProps> = ({
   totalSteps,
   currentStep,
+  goToStep,
 }) => {
   return (
     <div className = "flex justify-left mt-6 mb-6">
@@ -19,11 +21,10 @@ const Indicator: React.FunctionComponent<IndicatorProps> = ({
         ) => (
           <div
             key = {stepNum}
+            onClick = {() => goToStep(stepNum)} 
             className = {`w-3 h-3 ml-3 transition-all rounded-full ${
-              // dependiendo del paso, blanqueará unas bolas u oscurecerá las otras con esta condición
-              stepNum === currentStep ? "bg-black w-6 " : "bg-gray-300 "
-            }`}
-          ></div>
+              stepNum === currentStep ? "bg-black w-6" : "bg-gray-300"}`}>    
+          </div>   
         )
       )}
     </div>

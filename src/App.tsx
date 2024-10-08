@@ -42,30 +42,38 @@ const App: React.FunctionComponent = () => {
     setCurrentStep((lastStep) => Math.max(lastStep - 1, 0)); 
   };
 
+    /* Aprovechando que setCurrentStep ya tiene el número del paso, se lo damos a goToStep para después pasarlo al Indicator y así retener esa información ahí, para después hacer clic*/
+
+  const goToStep = (step: number) => {
+    setCurrentStep(step);
+  };
+
   return (
 
     <div className = "carousel w-full  flex justify-center items-center">
-        <Card title = {tutorialData[currentStep].title}
-            description = {tutorialData[currentStep].description}
-            image = {tutorialData[currentStep].image}
-            alt = {tutorialData[currentStep].alt}
-            bgColor = {tutorialData[currentStep].bgColor}
-            nextStep = {nextStep}
-            prevStep = {prevStep}
+      <Card title = {tutorialData[currentStep].title}
+        description = {tutorialData[currentStep].description}
+        image = {tutorialData[currentStep].image}
+        alt = {tutorialData[currentStep].alt}
+        bgColor = {tutorialData[currentStep].bgColor}
+        nextStep = {nextStep}
+        prevStep = {prevStep}
 
-            // lógica para que desaparezcan los botones. No hace falta addeventlistener o display:none, qué me estás contando! Lo hace React wtf
+        // lógica para que desaparezcan los botones. No hace falta addeventlistener o display:none, qué me estás contando! Lo hace React wtf
 
-            firstStep = {currentStep === 0} // Si el currentstep cumple esta condición será el último step.
-            lastStep = {currentStep === tutorialData.length - 1} // si el last step cumple la condición, será el primero.
+        firstStep = {currentStep === 0} // Si el currentstep cumple esta condición será el último step.
+        lastStep = {currentStep === tutorialData.length - 1} // si el last step cumple la condición, será el primero.
 
-            // Pasamos el total de pasos que tiene el array al Indicator
+        // Pasamos el total de pasos que tiene el array al Indicator
 
-            totalSteps = {tutorialData.length} 
+        totalSteps = {tutorialData.length} 
 
-            // Pasamos el paso actual de la array al Indicator
+        // Pasamos el paso actual de la array al Indicator
 
-            currentStep = {currentStep}
-        />
+        currentStep = {currentStep}
+
+        goToStep = {goToStep}
+      />
     </div>
   );
 };

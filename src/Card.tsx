@@ -13,6 +13,7 @@ interface CardProps {
   lastStep: boolean;
   totalSteps: number;
   currentStep: number;
+  goToStep: (step: number) => void;
 }
 
 const Card: React.FunctionComponent<CardProps> = ({
@@ -27,6 +28,7 @@ const Card: React.FunctionComponent<CardProps> = ({
   lastStep,
   totalSteps,
   currentStep,
+  goToStep,
 }) => {
   return (
     <div
@@ -36,7 +38,7 @@ const Card: React.FunctionComponent<CardProps> = ({
 
       <div className = {`w-full h-1/2 md:h-2/3 flex justify-center items-center `}>
         <img
-          className = {`w-full h-full object-contain p-4 $`} 
+          className = {`w-full h-full object-contain p-4`} 
           src = {image}
           alt = {alt}
           style = {{ backgroundColor: bgColor }}
@@ -52,7 +54,7 @@ const Card: React.FunctionComponent<CardProps> = ({
 
       {/* Indicador/contador de pasos */}
 
-      <Indicator totalSteps = {totalSteps} currentStep = {currentStep} />
+      <Indicator totalSteps = {totalSteps} currentStep = {currentStep} goToStep = {goToStep} />
 
       {/* Botón adelante */}
 
@@ -61,9 +63,9 @@ const Card: React.FunctionComponent<CardProps> = ({
       {!firstStep && (
         <button
           onClick = {prevStep}
-          className = "absolute bottom-4 right-20 md:bottom-6 md:right-60 w-10 h-10 bg-black text-white flex items-center justify-center rounded-full"
+          className = "absolute bottom-4 right-20 md:bottom-6 md:right-70 w-10 h-10 bg-black text-white flex items-center justify-center rounded-full"
         >
-          🡐
+          ←
         </button>
       )}
 
@@ -76,7 +78,7 @@ const Card: React.FunctionComponent<CardProps> = ({
           onClick = {nextStep}
           className = "absolute bottom-4 right-4 md:bottom-6 md:right-6 w-10 h-10 bg-black text-white flex items-center justify-center rounded-full"
         >
-          ➔
+          →
         </button>
       )}
     </div>
