@@ -44,7 +44,7 @@ const App: React.FunctionComponent = () => {
 
   return (
 
-    <div className = "carousel w-full  flex justify-center items-center App">
+    <div className = "carousel w-full  flex justify-center items-center">
         <Card title = {tutorialData[currentStep].title}
             description = {tutorialData[currentStep].description}
             image = {tutorialData[currentStep].image}
