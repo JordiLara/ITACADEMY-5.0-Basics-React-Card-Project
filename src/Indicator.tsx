@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 interface IndicatorProps {
 
@@ -19,14 +20,21 @@ const Indicator: React.FunctionComponent<IndicatorProps> = ({
       {Array.from({ length: totalSteps }).map(
         (_,stepNum // utilizar _ en la función le dice a React que ahí no hay un dato que procesar
         ) => (
-          <div
-            key = {stepNum}
-            onClick = {() => goToStep(stepNum)} 
-            className = {`w-3 h-3 ml-3 transition-all rounded-full ${
-              stepNum === currentStep ? "bg-black w-6" : "bg-gray-300"}`}>    
-          </div>   
-        )
-      )}
+        <motion.div //añade datos de animación de FramerMotion
+          key = {stepNum}
+          onClick = {() => goToStep(stepNum)}
+          className = {`w-3 h-3 ml-3 transition-all rounded-full`}
+            animate = {{
+              backgroundColor: stepNum === currentStep ? "#000000" : "#d1d1d1", 
+              width: stepNum === currentStep ? 24 : 12, //cambian el tamaño para la animación
+            }}
+            transition = {{ duration: 0.3 }}
+            style = {{
+              backgroundColor: stepNum === currentStep ? "#000000" : "#d1d1d1", 
+              width: stepNum === currentStep ? 24 : 12,
+            }}
+        /> 
+      ))}
     </div>
   );
 };

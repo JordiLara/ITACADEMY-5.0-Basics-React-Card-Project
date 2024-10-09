@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Indicator from "./Indicator";
 
 interface CardProps {
@@ -13,8 +14,26 @@ interface CardProps {
   lastStep: boolean;
   totalSteps: number;
   currentStep: number;
+  direction: "next" | "prev";
   goToStep: (step: number) => void;
 }
+
+  // manejan la dirección de la animación
+
+const variants = {
+  enter: (direction: "next" | "prev") => ({
+    x: direction === "next" ? 300 : -300, 
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: "next" | "prev") => ({
+    x: direction === "next" ? -300 : 300, 
+    opacity: 0,
+  }),
+};
 
 const Card: React.FunctionComponent<CardProps> = ({
   title,
@@ -28,11 +47,18 @@ const Card: React.FunctionComponent<CardProps> = ({
   lastStep,
   totalSteps,
   currentStep,
+  direction,
   goToStep,
 }) => {
-  return (
-    <div
-      className = {`w-full max-w-xs md:max-w-sm h-auto md:h-[550px] rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between relative`}
+  return ( // añade opciones para la animación de las tarjetas
+    <motion.div
+      className = "w-full max-w-xs md:max-w-sm h-auto md:h-[550px] rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between relative"
+      initial = "enter"
+      animate = "center"
+      exit = "exit"
+      variants = {variants}
+      custom = {direction}
+      transition = {{ duration: 0.5, ease: "easeInOut" }}
     >
       {/* Imagen superior */}
 
@@ -81,7 +107,7 @@ const Card: React.FunctionComponent<CardProps> = ({
           →
         </button>
       )}
-    </div>
+    </motion.div>
   );
 };
 
