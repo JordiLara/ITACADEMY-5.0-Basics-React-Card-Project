@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Indicator from "./Indicator";
+import Indicator from "./components/Indicator";
 
 interface CardProps {
   title: string;
