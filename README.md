@@ -6,7 +6,7 @@ It its been build to practise the main concepts of React framework.
 
 **Technologies:** 
 
-# React + TypeScript + Vite
+# React + TypeScript + Vite + Tailwind + Framer Motion
 
 **Installation:**
 
