@@ -31,11 +31,11 @@ const App: React.FunctionComponent = () => {
       image: '/images/meditation.svg',
       bgColor: '#ffd167',
     },
-    // Agregar aquí más opciones si fuera necesario.
+    // add more options here if needed.
   ];
 
-    // nextStep y prevStep, ahora se detienen al final de cada visionado. 
-    // Añadida lógica para la animación.
+    // nextStep and prevStep, now ends at the end of each ending (left and right). 
+    // added logic for the animation.
 
   const nextStep = () => {
     setDirection("next");
@@ -47,7 +47,7 @@ const App: React.FunctionComponent = () => {
     setCurrentStep((lastStep) => Math.max(lastStep - 1, 0)); 
   };
 
-    /* Aprovechando que setCurrentStep ya tiene el número del paso, se lo damos a goToStep para después pasarlo al Indicator y así retener esa información ahí, para después hacer clic*/
+    /* Already we have the setCurrentStep data, so we pass it to goToStep to pass it afterwards to the Indicator */
 
   const goToStep = (step: number) => {
     setDirection(step > currentStep ? "next" : "prev"); 
@@ -60,7 +60,7 @@ const App: React.FunctionComponent = () => {
       
       <AnimatePresence mode = "wait">
         <Card
-          key={currentStep} 
+          key = {currentStep} 
           title = {tutorialData[currentStep].title}
           description = {tutorialData[currentStep].description}
           image = {tutorialData[currentStep].image}
@@ -69,16 +69,17 @@ const App: React.FunctionComponent = () => {
           nextStep = {nextStep}
           prevStep = {prevStep}
 
-          // lógica para que desaparezcan los botones. No hace falta addeventlistener o display:none, qué me estás contando! Lo hace React wtf
+          // logic to make the buttons, diseapear. 
 
-          firstStep = {currentStep === 0} // Si el currentstep cumple esta condición  será el último step.
-          lastStep = {currentStep === tutorialData.length - 1} // si el last step cumple  la condición, será el primero.
+          firstStep = {currentStep === 0} 
 
-          // Pasamos el total de pasos que tiene el array al Indicator
+          lastStep = {currentStep === tutorialData.length - 1} 
+
+          // We pass the total paths on the array to the Indicator
 
           totalSteps = {tutorialData.length} 
-
-          // Pasamos el paso actual de la array al Indicator
+          
+          // Give the actual path of the array to the Indicator
 
           currentStep = {currentStep}
 

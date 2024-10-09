@@ -15,18 +15,17 @@ const Indicator: React.FunctionComponent<IndicatorProps> = ({
 }) => {
   return (
     <div className = "flex justify-left mt-6 mb-6">
-      {/* Generamos los círculos con .map y length para que sepa cuantos circulos hay o eso he entendido */}
 
       {Array.from({ length: totalSteps }).map(
-        (_,stepNum // utilizar _ en la función le dice a React que ahí no hay un dato que procesar
+        (_,stepNum // Passing _ as a parameter to React that this data its empty and there is no need to be processed
         ) => (
-        <motion.div //añade datos de animación de FramerMotion
+        <motion.div //adds animation data from FramerMotion
           key = {stepNum}
           onClick = {() => goToStep(stepNum)}
           className = {`w-3 h-3 ml-3 transition-all rounded-full`}
             animate = {{
               backgroundColor: stepNum === currentStep ? "#000000" : "#d1d1d1", 
-              width: stepNum === currentStep ? 24 : 12, //cambian el tamaño para la animación
+              width: stepNum === currentStep ? 24 : 12, 
             }}
             transition = {{ duration: 0.3 }}
             style = {{

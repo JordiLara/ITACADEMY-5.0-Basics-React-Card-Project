@@ -17,8 +17,7 @@ interface CardProps {
   direction: "next" | "prev";
   goToStep: (step: number) => void;
 }
-
-  // manejan la dirección de la animación
+  // those commands works with the direction of the animation
 
 const variants = {
   enter: (direction: "next" | "prev") => ({
@@ -50,9 +49,12 @@ const Card: React.FunctionComponent<CardProps> = ({
   direction,
   goToStep,
 }) => {
-  return ( // añade opciones para la animación de las tarjetas
+  return ( 
     <motion.div
       className = "w-full max-w-xs md:max-w-sm h-auto md:h-[550px] rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between relative"
+
+      // add options to the cards animation
+
       initial = "enter"
       animate = "center"
       exit = "exit"
@@ -60,7 +62,7 @@ const Card: React.FunctionComponent<CardProps> = ({
       custom = {direction}
       transition = {{ duration: 0.5, ease: "easeInOut" }}
     >
-      {/* Imagen superior */}
+      {/* Top image */}
 
       <div className = {`w-full h-1/2 md:h-2/3 flex justify-center items-center `}>
         <img
@@ -71,20 +73,20 @@ const Card: React.FunctionComponent<CardProps> = ({
         />
       </div>
 
-      {/* Sección de contenido */}
+      {/* Content section */}
 
       <div className = "bg-white flex-grow p-6">
         <h2 className = "font-bold text-xl mb-4 text-left">{title}</h2>
         <p className = "text-left leading-relaxed">{description}</p>
       </div>
 
-      {/* Indicador/contador de pasos */}
+      {/* Indicator/Step counter */}
 
       <Indicator totalSteps = {totalSteps} currentStep = {currentStep} goToStep = {goToStep} />
 
-      {/* Botón adelante */}
+      {/* Forward button */}
 
-      {/* Botón retroceder (si no se cumple la condición de que es el primer paso) */}
+      {/* Backwards button (if the first step condition its false) */}
 
       {!firstStep && (
         <button
@@ -95,9 +97,9 @@ const Card: React.FunctionComponent<CardProps> = ({
         </button>
       )}
 
-      {/* Boton atrás */}
+      {/* Backwards button */}
 
-      {/* Botón avanzar (si no se cumple la condición de que es el último paso) */}
+      {/* Forward button (if the last step condition its false) */}
 
       {!lastStep && (
         <button
