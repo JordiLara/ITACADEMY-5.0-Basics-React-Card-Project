@@ -1,4 +1,3 @@
-// cambiar a json
 
 interface TutorialDataItem {
     title: string,

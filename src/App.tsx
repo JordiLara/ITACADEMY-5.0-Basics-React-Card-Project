@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import {tutorialData} from './TutorialData';
+import {tutorialData} from './components/TutorialData';
 import Card from './Card';
 
 // Hook useState

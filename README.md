@@ -1,5 +1,4 @@
 ![Imagen del proyecto](public/images/image-all-cards.png) 
-![Imagen del proyecto](public/images/image-single-card.png)
 
 **Description** 📋
 
@@ -53,4 +52,8 @@ Interactive Onboarding: Guides users through key concepts with visually engaging
 TypeScript Advantages: Enhances code readability, maintainability, and type safety.
 Modern Technologies: Leverages the power of current front-end tools to deliver a smooth user experience.
 Practice Environment: Provides a sandbox to experiment with core React concepts.
+
+**Notes**  📖
+
+The language of the cards its in Catalan.
 
