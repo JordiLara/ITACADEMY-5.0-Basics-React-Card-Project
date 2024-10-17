@@ -17,9 +17,9 @@ const Indicator: React.FunctionComponent<IndicatorProps> = ({
     <div className = "flex justify-left mt-6 mb-6">
 
       {Array.from({ length: totalSteps }).map(
-        (_,stepNum // Passing _ as a parameter to React that this data its empty and there is no need to be processed
+        (_,stepNum 
         ) => (
-        <motion.div //adds animation data from FramerMotion
+        <motion.div 
           key = {stepNum}
           onClick = {() => goToStep(stepNum)}
           className = {`w-3 h-3 ml-3 transition-all rounded-full`}
