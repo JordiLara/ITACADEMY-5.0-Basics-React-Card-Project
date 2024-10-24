@@ -18,7 +18,7 @@ Framer Motion: Declarative animation library for smooth and engaging user intera
 # 1. Clone the Repository:
 
 Bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone (https://github.com/JordiLara/ITACADEMY-5.0-Basics-React-Card-Project.git)
 
 # 2. Install Dependencies:
 
