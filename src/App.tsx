@@ -31,7 +31,7 @@ const App: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="carousel w-full flex justify-center items-center">
+    <div className="carousel w-full flex justify-center items-center mt-40">
       
       <AnimatePresence mode = "wait">
         <Card
