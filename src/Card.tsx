@@ -17,7 +17,6 @@ interface CardProps {
   direction: "next" | "prev";
   goToStep: (step: number) => void;
 }
-  // those commands works with the direction of the animation
 
 const variants = {
   enter: (direction: "next" | "prev") => ({
@@ -53,8 +52,6 @@ const Card: React.FunctionComponent<CardProps> = ({
     <motion.div
       className = "w-full max-w-xs md:max-w-sm h-auto md:h-[550px] rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between relative"
 
-      // add options to the cards animation
-
       initial = "enter"
       animate = "center"
       exit = "exit"
@@ -62,8 +59,6 @@ const Card: React.FunctionComponent<CardProps> = ({
       custom = {direction}
       transition = {{ duration: 0.5, ease: "easeInOut" }}
     >
-      {/* Top image */}
-
       <div className = {`w-full h-1/2 md:h-2/3 flex justify-center items-center `}>
         <img
           className = {`w-full h-full object-contain p-4`} 
@@ -73,20 +68,12 @@ const Card: React.FunctionComponent<CardProps> = ({
         />
       </div>
 
-      {/* Content section */}
-
       <div className = "bg-white flex-grow p-6">
         <h2 className = "font-bold text-xl mb-4 text-left">{title}</h2>
         <p className = "text-left leading-relaxed">{description}</p>
       </div>
 
-      {/* Indicator/Step counter */}
-
       <Indicator totalSteps = {totalSteps} currentStep = {currentStep} goToStep = {goToStep} />
-
-      {/* Forward button */}
-
-      {/* Backwards button (if the first step condition its false) */}
 
       {!firstStep && (
         <button
@@ -96,10 +83,6 @@ const Card: React.FunctionComponent<CardProps> = ({
           ←
         </button>
       )}
-
-      {/* Backwards button */}
-
-      {/* Forward button (if the last step condition its false) */}
 
       {!lastStep && (
         <button
